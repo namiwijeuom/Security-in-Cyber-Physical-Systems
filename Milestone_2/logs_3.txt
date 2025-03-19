@@ -1,0 +1,43 @@
+PS W:\University of Moratuwa\Academics\Semester 7 and 8\EN4720_Security_in_Cyber_Physical_Systems\Project\Security-in-Cyber-Physical-Systems\Milestone_2> python app.py
+INFO:     Started server process [20012]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:__main__:Generating key with type: AES, size: 192
+INFO:     127.0.0.1:4388 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:__main__:Encrypting message with key_id: 1
+INFO:     127.0.0.1:4405 - "POST /encrypt HTTP/1.1" 200 OK
+INFO:__main__:Decrypting message with key_id: 1
+INFO:     127.0.0.1:4418 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:__main__:Generating Hash using the Algorithm: SHA-256
+INFO:     127.0.0.1:4429 - "POST /generate-hash HTTP/1.1" 200 OK
+INFO:__main__:Hash value of the received text J0iSZxKlK9gIE1yyBVhguTq+Fw2eI/PJntABI2/ZSUA=
+INFO:     127.0.0.1:4449 - "POST /verify-hash HTTP/1.1" 200 OK
+INFO:__main__:Generating key with type: AES, size: 256
+INFO:     127.0.0.1:4467 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:__main__:Encrypting message with key_id: 2
+INFO:     127.0.0.1:4485 - "POST /encrypt HTTP/1.1" 200 OK
+INFO:__main__:Decrypting message with key_id: 2
+INFO:     127.0.0.1:4503 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:__main__:Generating Hash using the Algorithm: SHA-512
+INFO:     127.0.0.1:4505 - "POST /generate-hash HTTP/1.1" 200 OK
+INFO:__main__:Hash value of the received text 5vkElOmSpQKhajdDlBtZ3XB5UTACi3ofaHQX0y65ggPGznfmjwJcTA9E/s+ZvFKSVUjMRLAJELt35MUvZjn6ng==
+INFO:     127.0.0.1:4516 - "POST /verify-hash HTTP/1.1" 200 OK
+INFO:__main__:Hash value of the received text 5vkElOmSpQKhajdDlBtZ3XB5UTACi3ofaHQX0y65ggPGznfmjwJcTA9E/s+ZvFKSVUjMRLAJELt35MUvZjn6ng==
+INFO:     127.0.0.1:4532 - "POST /verify-hash HTTP/1.1" 200 OK
+INFO:__main__:Generating key with type: AES, size: 256
+INFO:     127.0.0.1:4540 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:__main__:Encrypting message with key_id: 3
+INFO:     127.0.0.1:4544 - "POST /encrypt HTTP/1.1" 200 OK
+INFO:__main__:Decrypting message with key_id: 2
+INFO:     127.0.0.1:4555 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:__main__:Decrypting message with key_id: 2
+INFO:     127.0.0.1:4555 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:__main__:Decrypting message with key_id: 3
+INFO:     127.0.0.1:4576 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:__main__:Decrypting message with key_id: 3
+INFO:     127.0.0.1:4588 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:__main__:Decrypting message with key_id: 3
+INFO:     127.0.0.1:4603 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:__main__:Decrypting message with key_id: 3
+INFO:     127.0.0.1:4610 - "POST /decrypt HTTP/1.1" 200 OK

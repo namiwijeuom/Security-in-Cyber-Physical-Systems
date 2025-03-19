@@ -5,12 +5,16 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import padding
+from pydantic import BaseModel
 import os
 import base64
-from pydantic import BaseModel
 import base64
-from cryptography.hazmat.primitives import padding
 import binascii
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -25,6 +29,7 @@ class KeyGenerationRequest(BaseModel):
 # Update the endpoint to use the request body
 @app.post("/generate-key")
 async def generate_key(request: KeyGenerationRequest):
+    logger.info(f"Generating key with type: {request.key_type}, size: {request.key_size}")
     key_type = request.key_type
     key_size = request.key_size
 
@@ -65,6 +70,8 @@ class EncryptionRequest(BaseModel):
 # Update the endpoint to use the request body
 @app.post("/encrypt")
 async def encrypt(request: EncryptionRequest):
+    logger.info(f"Encrypting message with key_id: {request.key_id}")
+
     key_id = request.key_id
     plaintext = request.plaintext
     algorithm = request.algorithm
@@ -101,6 +108,8 @@ class DecryptionRequest(BaseModel):
 # Update the endpoint to use the request body
 @app.post("/decrypt")
 async def decrypt(request: DecryptionRequest):
+    logger.info(f"Decrypting message with key_id: {request.key_id}")
+
     key_id = request.key_id
     ciphertext = request.ciphertext
     algorithm = request.algorithm
@@ -147,6 +156,8 @@ class HashGeneration(BaseModel):
 # Hash Generation Endpoint
 @app.post("/generate-hash")
 async def generate_hash(request: HashGeneration):
+    logger.info(f"Generating Hash using the Algorithm: {request.algorithm}")
+
     data = request.data
     algorithm = request.algorithm
 
@@ -172,6 +183,8 @@ class HashVerification(BaseModel):
 # Hash Verification Endpoint
 @app.post("/verify-hash")
 async def verify_hash(request: HashVerification):
+    logger.info(f"Hash value of the received text {request.hash_value}")
+
     data = request.data
     hash_value = request.hash_value
     algorithm = request.algorithm
