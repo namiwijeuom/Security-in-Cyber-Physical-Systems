@@ -1,0 +1,28 @@
+PS W:\University of Moratuwa\Academics\Semester 7 and 8\EN4720_Security_in_Cyber_Physical_Systems\Project\Security-in-Cyber-Physical-Systems\Milestone_2> python app.py
+INFO:     Started server process [13160]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:14714 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14714 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14714 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14714 - "POST /generate-key HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14714 - "POST /encrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14739 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14747 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14748 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14748 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14755 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14763 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14781 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14788 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14796 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14803 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14809 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14818 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14823 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14830 - "POST /decrypt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:14834 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14834 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14834 - "POST /decrypt HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:14834 - "POST /decrypt HTTP/1.1" 200 OK

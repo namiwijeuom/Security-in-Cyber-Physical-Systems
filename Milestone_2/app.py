@@ -8,6 +8,9 @@ from cryptography.hazmat.primitives import padding
 import os
 import base64
 from pydantic import BaseModel
+import base64
+from cryptography.hazmat.primitives import padding
+import binascii
 
 app = FastAPI()
 
@@ -108,21 +111,29 @@ async def decrypt(request: DecryptionRequest):
     key = keys_store[key_id]
     
     if algorithm == "AES":
-        # Decode the Base64 ciphertext and extract IV
-        ciphertext = base64.b64decode(ciphertext)
-        iv = ciphertext[:16]
-        ciphertext = ciphertext[16:]
-        
-        cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
-        decryptor = cipher.decryptor()
-        
-        # Decrypt the data
-        padded_plaintext = decryptor.update(ciphertext) + decryptor.finalize()
-        
-        # Unpad the plaintext
-        unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
-        plaintext = unpadder.update(padded_plaintext) + unpadder.finalize()
-        plaintext = plaintext.decode()
+        try:
+            # Add padding to the Base64 ciphertext if necessary
+            padding_length = len(ciphertext) % 4
+            if padding_length:
+                ciphertext += "=" * (4 - padding_length)
+            
+            # Decode the Base64 ciphertext and extract IV
+            ciphertext = base64.b64decode(ciphertext)
+            iv = ciphertext[:16]
+            ciphertext = ciphertext[16:]
+            
+            cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+            decryptor = cipher.decryptor()
+            
+            # Decrypt the data
+            padded_plaintext = decryptor.update(ciphertext) + decryptor.finalize()
+            
+            # Unpad the plaintext
+            unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+            plaintext = unpadder.update(padded_plaintext) + unpadder.finalize()
+            plaintext = plaintext.decode()
+        except (ValueError, binascii.Error) as e:
+            raise HTTPException(status_code=400, detail=f"Decryption failed: {str(e)}")
     else:
         raise HTTPException(status_code=400, detail="Unsupported algorithm")
     
